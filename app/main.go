@@ -6,6 +6,7 @@ import (
 	userUsecase "github.com/LayssonENS/go-FastHTTP-api/user/usecase"
 	"github.com/buaazp/fasthttprouter"
 	"github.com/valyala/fasthttp"
+	"log"
 )
 
 func main() {
@@ -16,5 +17,9 @@ func main() {
 	router := fasthttprouter.New()
 	http.NewUserHandler(router, uUseCase)
 
-	fasthttp.ListenAndServe(":8080", router.Handler)
+	err := fasthttp.ListenAndServe(":8080", router.Handler)
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
 }
