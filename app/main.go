@@ -2,6 +2,8 @@ package main
 
 import (
 	"database/sql"
+	"log"
+
 	"github.com/LayssonENS/go-FastHTTP-api/config"
 	"github.com/LayssonENS/go-FastHTTP-api/config/database"
 	"github.com/LayssonENS/go-FastHTTP-api/user/delivery/http"
@@ -9,7 +11,6 @@ import (
 	userUsecase "github.com/LayssonENS/go-FastHTTP-api/user/usecase"
 	"github.com/buaazp/fasthttprouter"
 	"github.com/valyala/fasthttp"
-	"log"
 )
 
 func main() {

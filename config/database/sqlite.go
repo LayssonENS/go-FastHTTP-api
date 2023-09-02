@@ -3,8 +3,9 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"github.com/LayssonENS/go-FastHTTP-api/config"
 	"log"
+
+	"github.com/LayssonENS/go-FastHTTP-api/config"
 )
 
 func NewSqliteConnection() (*sql.DB, error) {

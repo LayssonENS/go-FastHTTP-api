@@ -3,10 +3,11 @@ package http
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
+
 	"github.com/LayssonENS/go-FastHTTP-api/domain"
 	"github.com/buaazp/fasthttprouter"
 	"github.com/valyala/fasthttp"
-	"strconv"
 )
 
 type UserHandler struct {

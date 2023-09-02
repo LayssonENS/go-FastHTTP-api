@@ -1,8 +1,9 @@
 package usecase
 
 import (
-	"github.com/LayssonENS/go-FastHTTP-api/domain"
 	"time"
+
+	"github.com/LayssonENS/go-FastHTTP-api/domain"
 )
 
 type userUseCase struct {

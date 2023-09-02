@@ -2,8 +2,9 @@ package repository
 
 import (
 	"database/sql"
-	"github.com/LayssonENS/go-FastHTTP-api/domain"
 	"log"
+
+	"github.com/LayssonENS/go-FastHTTP-api/domain"
 )
 
 type userRepository struct {
