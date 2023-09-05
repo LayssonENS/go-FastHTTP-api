@@ -36,7 +36,7 @@ func main() {
 	router := fasthttprouter.New()
 	http.NewUserHandler(router, userUseCase)
 
-	err = fasthttp.ListenAndServe(":8080", router.Handler)
+	err = fasthttp.ListenAndServe(config.GetEnv().Port, router.Handler)
 	if err != nil {
 		log.Fatalln(err)
 		return

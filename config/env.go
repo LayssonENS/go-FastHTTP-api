@@ -7,8 +7,8 @@ import (
 )
 
 type Environment struct {
-	Port     int  `env:"PORT,default=8000"`
-	Debug    bool `env:"DEBUG,default=false"`
+	Port     string `env:"PORT,default=9000"`
+	Debug    bool   `env:"DEBUG,default=false"`
 	DbConfig DbConfig
 	Extras   env.EnvSet
 }
@@ -17,10 +17,10 @@ type DbConfig struct {
 	User     string `env:"DB_USER,default=postgres"`
 	Port     string `env:"DB_PORT,default=5432"`
 	Password string `env:"DB_PASSWORD,default=postgres"`
-	Host     string `env:"DB_HOST,default=localhost"`
+	Host     string `env:"DB_HOST,default=postgres"`
 	Name     string `env:"DB_NAME,default=postgres"`
 	Path     string `env:"DB_PATH,default=./sqlite.db"`
-	DbType   string `env:"DB_TYPE,default=sqlite"`
+	DbType   string `env:"DB_TYPE,default=postgres"`
 }
 
 var Env Environment
