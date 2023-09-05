@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 
 	"github.com/LayssonENS/go-FastHTTP-api/config"
@@ -36,7 +37,7 @@ func main() {
 	router := fasthttprouter.New()
 	http.NewUserHandler(router, userUseCase)
 
-	err = fasthttp.ListenAndServe(config.GetEnv().Port, router.Handler)
+	err = fasthttp.ListenAndServe(fmt.Sprintf(":%s", config.GetEnv().Port), router.Handler)
 	if err != nil {
 		log.Fatalln(err)
 		return
