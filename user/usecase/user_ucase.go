@@ -19,6 +19,10 @@ func NewUserUseCase(a domain.UserUseCase, timeout time.Duration) domain.UserUseC
 }
 
 func (u *userUseCase) GetByID(id int64) (domain.User, error) {
-	//TODO implement me
-	panic("implement me")
+	user, err := u.userRepo.GetByID(id)
+	if err != nil {
+		return domain.User{}, err
+	}
+
+	return user, nil
 }
