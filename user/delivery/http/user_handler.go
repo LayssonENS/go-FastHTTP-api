@@ -19,7 +19,8 @@ func NewUserHandler(router *fasthttprouter.Router, us domain.UserUseCase) {
 		UserUCase: us,
 	}
 
-	router.GET("/articles/:id", handler.GetByID)
+	router.GET("/users/:id", handler.GetByID)
+	router.POST("/users", handler.CreateUser)
 }
 
 func (a *UserHandler) GetByID(ctx *fasthttp.RequestCtx) {
@@ -37,6 +38,24 @@ func (a *UserHandler) GetByID(ctx *fasthttp.RequestCtx) {
 	}
 
 	responseJSON(ctx, fasthttp.StatusOK, art)
+}
+
+func (a *UserHandler) CreateUser(ctx *fasthttp.RequestCtx) {
+	var user domain.User
+
+	err := json.Unmarshal(ctx.PostBody(), &user)
+	if err != nil {
+		responseError(ctx, "Invalid request body", fasthttp.StatusBadRequest)
+		return
+	}
+
+	err = a.UserUCase.CreateUser(&user)
+	if err != nil {
+		responseError(ctx, err.Error(), fasthttp.StatusInternalServerError)
+		return
+	}
+
+	responseJSON(ctx, fasthttp.StatusCreated, user)
 }
 
 func responseError(ctx *fasthttp.RequestCtx, message string, status int) {
