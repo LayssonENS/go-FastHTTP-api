@@ -32,7 +32,7 @@ func main() {
 	}
 
 	userRepository := userRepo.NewUserRepository(db)
-	userUseCase := userUsecase.NewUserUseCase(userRepository, 10)
+	userUseCase := userUsecase.NewUserUseCase(userRepository)
 
 	router := fasthttprouter.New()
 	http.NewUserHandler(router, userUseCase)
